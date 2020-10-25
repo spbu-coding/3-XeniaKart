@@ -1,0 +1,201 @@
+Для проведения данного эксперимента нам потребовалось решить две системы уравнений:
+
+	1)	x1 + y1 = 2					
+		x1 + 1.0001y1 = 2.0001	
+
+		x1 = 1
+		y1 = 1
+
+	2)  x2 + y2 = 2					
+		x2 + 1.0001y2 = 2.0002
+
+		x2 + y2 = 2	
+		2 + 1.0001y2 = 2.0001 + 0,0001 (Отклонение от первой системы)
+
+		x2 = 0
+		y2 = 2
+
+Что примечательно, при использовании формулы y2 = ((2.0001f + deviation)-2.0f)/0.0001f для типа float, программа уходила в бесконечный цикл. 
+
+По результатам эксперимента выяснилось, что у типа float (одинарная точность) происходит расхождение значений расстояний между точками (решениями систем), начиная с 7 знака после запятой. Это происходит потому что точность типа float составляет 24 бита, т.е. примерно 7 знаков. Точность же типа double составляет 16 знаков (53 бита). Точность float меньше точности double, потому что у типа float меньше бит для значения.
+Отсюда следует, что для повышения точности типа float требуется меньше промежуточных вычислений, чтобы точность падала меньшее число раз
+Эксперименты с типом double и float завершились одновременно, для этого потребовалась 21 итерация. 
+
+
+Результат выполнения программы:
+
+Experiment with the double type:
+
+Solution: x, y = (0.00000000000000000000; 2.00000000000000000000)
+distance between points: 1.41421356237309514547
+Solution after deviation reduction: x, y = (0.50000000000000000000; 1.50000000000000000000)
+Distance between points after deviation reduction: 0.70710678118654757274
+Counting iterations of a double experiment: 1
+
+Solution after deviation reduction: x, y = (0.75000000000000000000; 1.25000000000000000000)
+Distance between points after deviation reduction: 0.35355339059327378637
+Counting iterations of a double experiment: 2
+
+Solution after deviation reduction: x, y = (0.87500000000000000000; 1.12500000000000000000)
+Distance between points after deviation reduction: 0.17677669529663689318
+Counting iterations of a double experiment: 3
+
+Solution after deviation reduction: x, y = (0.93750000000000000000; 1.06250000000000000000)
+Distance between points after deviation reduction: 0.08838834764831844659
+Counting iterations of a double experiment: 4
+
+Solution after deviation reduction: x, y = (0.96875000000000000000; 1.03125000000000000000)
+Distance between points after deviation reduction: 0.04419417382415922330
+Counting iterations of a double experiment: 5
+
+Solution after deviation reduction: x, y = (0.98437500000000000000; 1.01562500000000000000)
+Distance between points after deviation reduction: 0.02209708691207961165
+Counting iterations of a double experiment: 6
+
+Solution after deviation reduction: x, y = (0.99218750000000000000; 1.00781250000000000000)
+Distance between points after deviation reduction: 0.01104854345603980582
+Counting iterations of a double experiment: 7
+
+Solution after deviation reduction: x, y = (0.99609375000000000000; 1.00390625000000000000)
+Distance between points after deviation reduction: 0.00552427172801990291
+Counting iterations of a double experiment: 8
+
+Solution after deviation reduction: x, y = (0.99804687500000000000; 1.00195312500000000000)
+Distance between points after deviation reduction: 0.00276213586400995146
+Counting iterations of a double experiment: 9
+
+Solution after deviation reduction: x, y = (0.99902343750000000000; 1.00097656250000000000)
+Distance between points after deviation reduction: 0.00138106793200497573
+Counting iterations of a double experiment: 10
+
+Solution after deviation reduction: x, y = (0.99951171875000000000; 1.00048828125000000000)
+Distance between points after deviation reduction: 0.00069053396600248786
+Counting iterations of a double experiment: 11
+
+Solution after deviation reduction: x, y = (0.99975585937500000000; 1.00024414062500000000)
+Distance between points after deviation reduction: 0.00034526698300124393
+Counting iterations of a double experiment: 12
+
+Solution after deviation reduction: x, y = (0.99987792968750000000; 1.00012207031250000000)
+Distance between points after deviation reduction: 0.00017263349150062197
+Counting iterations of a double experiment: 13
+
+Solution after deviation reduction: x, y = (0.99993896484375000000; 1.00006103515625000000)
+Distance between points after deviation reduction: 0.00008631674575031098
+Counting iterations of a double experiment: 14
+
+Solution after deviation reduction: x, y = (0.99996948242187500000; 1.00003051757812500000)
+Distance between points after deviation reduction: 0.00004315837287515549
+Counting iterations of a double experiment: 15
+
+Solution after deviation reduction: x, y = (0.99998474121093750000; 1.00001525878906250000)
+Distance between points after deviation reduction: 0.00002157918643757775
+Counting iterations of a double experiment: 16
+
+Solution after deviation reduction: x, y = (0.99999237060546875000; 1.00000762939453125000)
+Distance between points after deviation reduction: 0.00001078959321878887
+Counting iterations of a double experiment: 17
+
+Solution after deviation reduction: x, y = (0.99999618530273437500; 1.00000381469726562500)
+Distance between points after deviation reduction: 0.00000539479660939444
+Counting iterations of a double experiment: 18
+
+Solution after deviation reduction: x, y = (0.99999809265136718750; 1.00000190734863281250)
+Distance between points after deviation reduction: 0.00000269739830469722
+Counting iterations of a double experiment: 19
+
+Solution after deviation reduction: x, y = (0.99999904632568359375; 1.00000095367431640625)
+Distance between points after deviation reduction: 0.00000134869915234861
+Counting iterations of a double experiment: 20
+
+Solution after deviation reduction: x, y = (0.99999952316284179688; 1.00000047683715820312)
+Distance between points after deviation reduction: 0.00000067434957617430
+Counting iterations of a double experiment: 21
+
+Experiment with the double type:
+
+Solution: x, y = (0.00000000000000000000; 2.00000000000000000000)
+distance between points: 1.41421353816986083984
+ Solution after deviation reduction: x, y = (0.50000000000000000000; 1.50000000000000000000)
+Distance between points after deviation reduction: 0.70710676908493041992
+Counting iterations of a float experiment: 1
+
+Solution after deviation reduction: x, y = (0.75000000000000000000; 1.25000000000000000000)
+Distance between points after deviation reduction: 0.35355338454246520996
+Counting iterations of a float experiment: 2
+
+Solution after deviation reduction: x, y = (0.87500000000000000000; 1.12500000000000000000)
+Distance between points after deviation reduction: 0.17677669227123260498
+Counting iterations of a float experiment: 3
+
+Solution after deviation reduction: x, y = (0.93750000000000000000; 1.06250000000000000000)
+Distance between points after deviation reduction: 0.08838834613561630249
+Counting iterations of a float experiment: 4
+
+Solution after deviation reduction: x, y = (0.96875000000000000000; 1.03125000000000000000)
+Distance between points after deviation reduction: 0.04419417306780815125
+Counting iterations of a float experiment: 5
+
+Solution after deviation reduction: x, y = (0.98437500000000000000; 1.01562500000000000000)
+Distance between points after deviation reduction: 0.02209708653390407562
+Counting iterations of a float experiment: 6
+
+Solution after deviation reduction: x, y = (0.99218750000000000000; 1.00781250000000000000)
+Distance between points after deviation reduction: 0.01104854326695203781
+Counting iterations of a float experiment: 7
+
+Solution after deviation reduction: x, y = (0.99609375000000000000; 1.00390625000000000000)
+Distance between points after deviation reduction: 0.00552427163347601891
+Counting iterations of a float experiment: 8
+
+Solution after deviation reduction: x, y = (0.99804687500000000000; 1.00195312500000000000)
+Distance between points after deviation reduction: 0.00276213581673800945
+Counting iterations of a float experiment: 9
+
+Solution after deviation reduction: x, y = (0.99902343750000000000; 1.00097656250000000000)
+Distance between points after deviation reduction: 0.00138106790836900473
+Counting iterations of a float experiment: 10
+
+Solution after deviation reduction: x, y = (0.99951171875000000000; 1.00048828125000000000)
+Distance between points after deviation reduction: 0.00069053395418450236
+Counting iterations of a float experiment: 11
+
+Solution after deviation reduction: x, y = (0.99975585937500000000; 1.00024414062500000000)
+Distance between points after deviation reduction: 0.00034526697709225118
+Counting iterations of a float experiment: 12
+
+Solution after deviation reduction: x, y = (0.99987792968750000000; 1.00012207031250000000)
+Distance between points after deviation reduction: 0.00017263348854612559
+Counting iterations of a float experiment: 13
+
+Solution after deviation reduction: x, y = (0.99993896484375000000; 1.00006103515625000000)
+Distance between points after deviation reduction: 0.00008631674427306280
+Counting iterations of a float experiment: 14
+
+Solution after deviation reduction: x, y = (0.99996948242187500000; 1.00003051757812500000)
+Distance between points after deviation reduction: 0.00004315837213653140
+Counting iterations of a float experiment: 15
+
+Solution after deviation reduction: x, y = (0.99998474121093750000; 1.00001525878906250000)
+Distance between points after deviation reduction: 0.00002157918606826570
+Counting iterations of a float experiment: 16
+
+Solution after deviation reduction: x, y = (0.99999237060546875000; 1.00000762939453125000)
+Distance between points after deviation reduction: 0.00001078959303413285
+Counting iterations of a float experiment: 17
+
+Solution after deviation reduction: x, y = (0.99999618530273437500; 1.00000381469726562500)
+Distance between points after deviation reduction: 0.00000539479651706642
+Counting iterations of a float experiment: 18
+
+Solution after deviation reduction: x, y = (0.99999809265136718750; 1.00000190734863281250)
+Distance between points after deviation reduction: 0.00000269739825853321
+Counting iterations of a float experiment: 19
+
+Solution after deviation reduction: x, y = (0.99999904632568359375; 1.00000095367431640625)
+Distance between points after deviation reduction: 0.00000134869912926661
+Counting iterations of a float experiment: 20
+
+Solution after deviation reduction: x, y = (0.99999952316284179688; 1.00000047683715820312)
+Distance between points after deviation reduction: 0.00000067434956463330
+Counting iterations of a float experiment: 21
